@@ -33,9 +33,9 @@ class Contact(models.Model):
     def __str__(self):
         return self.query_txt
     
-    def save(self):
+    def save(self, *args, **kwargs):
         send_mail(self.subject, self.query_txt, self.email, ["danielhong35@yahoo.com"], fail_silently=False)
-        return super().save()
+        return super().save(*args, **kwargs)
     
     class Meta:
         ordering = ['add_time']
