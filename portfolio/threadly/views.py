@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User, Group
-from portfolio.threadly.models import Comment
+from portfolio.threadly.models import Comment, Contact
 from rest_framework import viewsets
 from rest_framework import permissions
-from portfolio.threadly.serializers import UserSerializer, GroupSerializer, CommentSerializer
+from portfolio.threadly.serializers import UserSerializer, GroupSerializer, CommentSerializer, ContactSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -24,8 +24,16 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 class CommentViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows groups to be viewed or edited.
+    API endpoint that allows comments to be viewed or edited.
     """
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class ContactViewSet(views.ModelViewSet):
+    """
+    API endpoint that allows contacts to be viewed or edited.
+    """
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
     permission_classes = [permissions.IsAuthenticated]
