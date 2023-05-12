@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.mail improt send_mail
 
 # Comment model
 class Comment(models.Model):
@@ -31,6 +32,10 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.query_txt
+    
+    def save(self):
+        send_mail(self.subject, self.query_txt, self.email, ["danielhong35@yahoo.com"], fail_silently=False)
+        return super().save()
     
     class Meta:
         ordering = ['add_time']
