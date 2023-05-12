@@ -30,7 +30,7 @@ class CommentViewSet(viewsets.ModelViewSet):
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-class ContactViewSet(views.ModelViewSet):
+class ContactViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows contacts to be viewed or edited.
     """
