@@ -177,4 +177,4 @@ CORS_ALLOWED_ORIGINS = [
     'https://www.danyo.tech'
 ]
 
-EMAIL_BACKEDN = 'django,core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django,core.mail.backends.console.EmailBackend'
