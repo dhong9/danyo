@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from portfolio.threadly.models import Comment
+from portfolio.threadly.models import Comment, Contact
 from rest_framework import serializers
 
 
@@ -18,3 +18,8 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = '__all__'
+
+class ContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contact
+        fields = ['id', 'full_name', 'email', 'subject', 'query_txt']
