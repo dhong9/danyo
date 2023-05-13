@@ -32,6 +32,10 @@ ALLOWED_HOSTS = [
     'localhost',
     'dhong9.pythonanywhere.com'
 ]
+CSRF_TRUSTED_ORIGINS = [
+    'https://danyo.tech',
+    'https://www.danyo.tech'
+]
 
 
 # Application definition
