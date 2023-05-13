@@ -182,4 +182,15 @@ CORS_ALLOWED_ORIGINS = [
     'https://www.danyo.tech'
 ]
 
+CORS_ORIGIN_WHITELIST = [
+    'https://danyo.tech',
+    'https://www.danyo.tech'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://danyo.tech',
+    'https://www.danyo.tech'
+]
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
