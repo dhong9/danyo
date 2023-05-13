@@ -33,8 +33,8 @@ ALLOWED_HOSTS = [
     'dhong9.pythonanywhere.com'
 ]
 CSRF_TRUSTED_ORIGINS = [
-    'https://danyo.tech',
-    'https://www.danyo.tech'
+    'https://*.danyo.tech',
+    'https://dhong9.pythonanywhere.com'
 ]
 
 
