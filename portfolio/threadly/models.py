@@ -34,7 +34,7 @@ class Contact(models.Model):
         return self.query_txt
     
     def save(self, *args, **kwargs):
-        email = EmailMessage(self.subject, self.query_txt,, to=["danielhong35@yahoo.com"])
+        email = EmailMessage(self.subject, self.query_txt, to=["danielhong35@yahoo.com"])
         email.send()
         return super().save(*args, **kwargs)
     
