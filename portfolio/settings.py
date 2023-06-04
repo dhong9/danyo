@@ -195,6 +195,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "dhong9.pythonanywhere.com"
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "danielhong35@gmail.com"
 SERVER_EMAIL = "danielhong35@gmail.com"
