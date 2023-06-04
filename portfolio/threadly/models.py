@@ -1,6 +1,4 @@
-import django
 from django.db import models
-from django.conf import settings
 from django.core.mail import EmailMessage
 
 # Comment model
@@ -36,15 +34,6 @@ class Contact(models.Model):
         return self.query_txt
     
     def save(self, *args, **kwargs):
-        settings.configure(
-            EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend',
-            EMAIL_HOST = 'smtp.gmail.com',
-            EMAIL_PORT = 587,
-            EMAIL_HOST_USER = 'danielhong35@gmail.com',
-            EMAIL_HOST_PASSWORD = 'xxxxxxxxxxxx',
-            EMAIL_USE_TLS = True
-        )
-        django.setup()
         email = EmailMessage(self.subject, self.query_txt, to=["danielhong35@yahoo.com"])
         email.send()
         return super().save(*args, **kwargs)
