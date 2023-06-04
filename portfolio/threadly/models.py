@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 
 # Comment model
 class Comment(models.Model):
@@ -34,7 +34,8 @@ class Contact(models.Model):
         return self.query_txt
     
     def save(self, *args, **kwargs):
-        send_mail(self.subject, self.query_txt, self.email, ["danielhong35@yahoo.com"], fail_silently=False)
+        email = EmailMessage(self.subject, self.query_txt,, to=["danielhong35@yahoo.com"])
+        email.send()
         return super().save(*args, **kwargs)
     
     class Meta:
