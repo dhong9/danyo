@@ -30,6 +30,7 @@ def getRoutes(request):
     return Response(routes)
 
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def testEndPoint(request):
     if request.method == 'GET':
         data = f"Congratulation {request.user}, your API just responded to GET request"
