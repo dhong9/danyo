@@ -192,8 +192,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://www.danyo.tech'
 ]
 
-APPEND_SLASH = False
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.gmail.com"
