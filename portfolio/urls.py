@@ -33,7 +33,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('accounts/', include('portfolio.accounts.urls')),
-    path('comments', views.CommentViewSet.as_view({'get': 'list', 'post': 'create'}), name='comments-list'),
-    path('comments/<pk>', views.CommentViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='comments-detail'),
+    path('comments/', views.CommentViewSet.as_view({'get': 'list', 'post': 'create'}), name='comments-list'),
+    path('comments/<pk>/', views.CommentViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='comments-detail'),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
