@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 router = routers.SimpleRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'comments', views.CommentViewSet)
 router.register(r'contacts', views.ContactViewSet)
 
 # Wire up our API using automatic URL routing.
@@ -33,5 +34,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('accounts/', include('portfolio.accounts.urls')),
-    path('comments/', views.ContactViewSet.as_view(), name='comments'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
