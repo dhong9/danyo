@@ -67,6 +67,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'portfolio.urls'
+APPEND_SLASH = False
 
 TEMPLATES = [
     {
