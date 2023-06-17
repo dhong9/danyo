@@ -21,10 +21,9 @@ from portfolio.threadly import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-router = routers.DefaultRouter ()
+router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
-router.register(r'comments', views.CommentViewSet)
 router.register(r'contacts', views.ContactViewSet)
 
 # Wire up our API using automatic URL routing.
@@ -34,4 +33,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('accounts/', include('portfolio.accounts.urls')),
+    path('comments', views.CommentViewSet.as_view({'get': 'list', 'post': 'create'}), name='comments-list'),
+    path('comments/<pk>', views.CommentViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='comments-detail'),
+    
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
