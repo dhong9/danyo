@@ -21,7 +21,7 @@ from portfolio.threadly import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-router = routers.SimpleRouter()
+router = routers.DefaultRouter ()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 router.register(r'comments', views.CommentViewSet)
