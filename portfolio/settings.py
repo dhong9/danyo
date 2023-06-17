@@ -66,8 +66,6 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware"
 ]
 
-SECURE_SSL_REDIRECT = False
-
 ROOT_URLCONF = 'portfolio.urls'
 
 TEMPLATES = [
