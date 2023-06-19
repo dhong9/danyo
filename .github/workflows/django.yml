@@ -3,6 +3,7 @@ name: Django CI
 env:
   SECRET_KEY: '${{ secrets.SECRET_KEY }}'
   EMAIL_PASSWORD: '${{ secrets.EMAIL_PASSWORD }}'
+  CODECOV_TOKEN: '${{ secrets.CODECOV_TOKEN }}'
 
 on:
   push:
