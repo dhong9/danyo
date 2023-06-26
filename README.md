@@ -30,7 +30,47 @@ Quick start options:
 
 1. Download and Install Python 3.11 version from [Python Official Page](https://www.python.org/downloads/)
 2. In `settings.py`, add `"localhost"` to CORS Whitelist and Allowed Host list
-3. Navigate to the root ./ directory of the product and run `env\Scripts\Activate` to start a virtual Python environment
-4. Run `pip install -r requirements.txt` to install our local dependencies
-5. Run `python manage.py makemigrations` and `python manage.py migrate` to initialize your local database
-5. Run `python manage.py runserver` to serve this application over `localhost`
+3. Make a `.env` file to define `SECRET_KEY` and `EMAIL_PASSWORD` 
+4. Navigate to the root ./ directory of the product and run `env\Scripts\Activate` to start a virtual Python environment
+5. Run `pip install -r requirements.txt` to install our local dependencies
+6. Run `python manage.py makemigrations` and `python manage.py migrate` to initialize your local database
+7. Run `python manage.py runserver` to serve this application over `localhost`
+
+### What's Included
+
+Within the download, you'll find the following directories and files:
+
+```
+danyo
+    ├── .github
+    │   ├── workflows
+    |   │   ├── django.yml
+    ├── portfolio
+    │   ├── accounts
+    |   │   ├── migrations
+    |   |   │   ├── __init__.py
+    │   │   ├── __init__.py
+    │   │   ├── admin.py
+    │   │   ├── apps.py
+    │   │   ├── models.py
+    │   │   ├── serializer.py
+    │   │   ├── tests.py
+    │   │   ├── urls.py
+    │   │   ├── views.py
+    │   ├── threadly
+    │   │   ├── __init__.py
+    │   │   ├── admin.py
+    │   │   ├── apps.py
+    │   │   ├── models.py
+    │   │   ├── serializer.py
+    │   │   ├── tests.py
+    │   │   ├── views.py
+    │   ├── __init__.py
+    │   ├── asgi.py
+    │   ├── settings.py
+    │   ├── urls.py
+    │   ├── wsgi.py
+    ├── manage.py
+    ├── README.py
+    ├── requirements.txt
+```
