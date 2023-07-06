@@ -8,6 +8,7 @@ class Comment(models.Model):
     email = models.EmailField()
     parent = models.ForeignKey("self", null=True, blank=True, on_delete=models.CASCADE)
     body = models.TextField()
+    isPlainText = models.BooleanField(default=True)
 
     create = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
