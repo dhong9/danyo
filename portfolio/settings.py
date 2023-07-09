@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'portfolio.threadly',
-    'portfolio.accounts'
+    'portfolio.accounts',
+    'portfolio.forums'
 ]
 
 MIDDLEWARE = [
