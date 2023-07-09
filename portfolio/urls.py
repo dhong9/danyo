@@ -17,14 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from portfolio.threadly import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+# Views
+from portfolio.threadly import views as threadly_views
+from portfolio.forums import views as forums_views
+
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
-router.register(r'contacts', views.ContactViewSet)
+router.register(r'users', threadly_views.UserViewSet)
+router.register(r'groups', threadly_views.GroupViewSet)
+router.register(r'contacts', threadly_views.ContactViewSet)
+router.register(r'categories', forums_views.CategoryViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
@@ -35,5 +39,7 @@ urlpatterns = [
     path('accounts/', include('portfolio.accounts.urls')),
     path('comments', views.CommentViewSet.as_view({'get': 'list', 'post': 'create'}), name='comments-list'),
     path('comments/<pk>', views.CommentViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='comments-detail'),
+    path('categories', views.CategoryViewSet.as_view({'get': 'list', 'post': 'create'}), name='categories-list'),
+    path('categories/<pk>', views.CategoryViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='categories-detail'),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
