@@ -39,7 +39,7 @@ urlpatterns = [
     path('accounts/', include('portfolio.accounts.urls')),
     path('comments', threadly_views.CommentViewSet.as_view({'get': 'list', 'post': 'create'}), name='comments-list'),
     path('comments/<pk>', threadly_views.CommentViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='comments-detail'),
-    path('categories', forums_views.CategoryViewSet.as_view({'get': 'list', 'post': 'create'}), name='categories-list'),
-    path('categories/<pk>', forums_views.CategoryViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='categories-detail'),
+    path('posts', forums_views.PostViewSet.as_view({'get': 'list', 'post': 'create'}), name='posts-list'),
+    path('posts/<pk>', forums_views.PostViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='posts-detail'),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
