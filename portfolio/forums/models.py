@@ -11,7 +11,7 @@ class Category(models.Model):
 # Post model
 class Post(models.Model):
     postName = models.CharField(max_length=50)
-    category = models.CharField(max_length=50)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     email = models.EmailField()
     parent = models.ForeignKey("self", null=True, blank=True, on_delete=models.CASCADE)

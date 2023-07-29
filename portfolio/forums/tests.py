@@ -15,15 +15,16 @@ class CategoryTest(TestCase):
 class PostTest(TestCase):
 
     def setUp(self):
+        testCategory = Category.objects.create(name="AI", description="Artificial Intelligence")
         self.parent_post = Post.objects.create(
-            category='scategory',
+            category=testCategory,
             postName='Test Page',
             name='John Doe',
             email='johndoe@example.com',
             body='Parent Post',
         )
         self.child_post = Post.objects.create(
-            category='scategory',
+            category=testCategory,
             postName='Test Page',
             name='Jane Doe',
             email='janedoe@example.com',
@@ -32,7 +33,8 @@ class PostTest(TestCase):
         )
     
     def create_post(self, category="airplanes", postName="sports", name="John Doe", email="john_doe@aol.com", body="Sports keeps you healthy."):
-        return Post.objects.create(category=category, postName=postName, name=name, email=email, body=body)
+        testCategory = Category.objects.create(name=category, description="Unit test category")
+        return Post.objects.create(category=testCategory, postName=postName, name=name, email=email, body=body)
 
     def test_get_posts_returns_child_posts(self):
         posts = self.parent_post.get_posts()
