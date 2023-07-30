@@ -3,8 +3,8 @@ from portfolio.threadly.models import Project, Comment, Contact
 
 class ProjectTest(TestCase):
 
-    def create_project(self, name="Whitespace", description="Whitespace interpreter"):
-        return Project.objects.create(name=name, description=description)
+    def create_project(self, name="Whitespace", category="Interpreters"):
+        return Project.objects.create(name=name, category=category)
     
     def test_project_creation(self):
         project = self.create_project()
@@ -14,7 +14,7 @@ class ProjectTest(TestCase):
 class CommentTest(TestCase):
 
     def setUp(self):
-        testProject = Project.objects.create(name="AI", description="Artificial Intelligence")
+        testProject = Project.objects.create(name="AI", category="Computers")
         self.parent_comment = Comment.objects.create(
             project=testProject,
             name='John Doe',
@@ -30,7 +30,7 @@ class CommentTest(TestCase):
         )
     
     def create_comment(self, pageName="sports", name="John Doe", email="john_doe@aol.com", body="Sports keeps you healthy."):
-        testProject = Project.objects.create(name=pageName, description="Unit test category")
+        testProject = Project.objects.create(name=pageName, category="Philosophy")
         return Comment.objects.create(project=testProject, name=name, email=email, body=body)
 
     def test_get_comments_returns_child_comments(self):

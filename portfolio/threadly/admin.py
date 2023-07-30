@@ -5,8 +5,8 @@ from .models import Project, Comment, Contact
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description')
-    search_fields = ('name', 'description')
+    list_display = ('name', 'category')
+    search_fields = ('name', 'category')
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
