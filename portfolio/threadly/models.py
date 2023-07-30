@@ -11,7 +11,7 @@ class Project(models.Model):
 
 # Comment model
 class Comment(models.Model):
-    pageName = models.CharField(max_length=50)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     email = models.EmailField()
     parent = models.ForeignKey("self", null=True, blank=True, on_delete=models.CASCADE)

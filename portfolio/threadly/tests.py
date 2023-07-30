@@ -14,14 +14,15 @@ class ProjectTest(TestCase):
 class CommentTest(TestCase):
 
     def setUp(self):
+        testProject = Project.objects.create(name="AI", description="Artificial Intelligence")
         self.parent_comment = Comment.objects.create(
-            pageName='Test Page',
+            project=testProject,
             name='John Doe',
             email='johndoe@example.com',
             body='Parent Comment',
         )
         self.child_comment = Comment.objects.create(
-            pageName='Test Page',
+            project=testProject,
             name='Jane Doe',
             email='janedoe@example.com',
             parent=self.parent_comment,
@@ -29,7 +30,8 @@ class CommentTest(TestCase):
         )
     
     def create_comment(self, pageName="sports", name="John Doe", email="john_doe@aol.com", body="Sports keeps you healthy."):
-        return Comment.objects.create(pageName=pageName, name=name, email=email, body=body)
+        testProject = Project.objects.create(name=pageName, description="Unit test category")
+        return Comment.objects.create(project=testProject, name=name, email=email, body=body)
 
     def test_get_comments_returns_child_comments(self):
         comments = self.parent_comment.get_comments()

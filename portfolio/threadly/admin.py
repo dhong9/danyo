@@ -10,7 +10,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'pageName', 'create', 'active', 'isPlainText')
+    list_display = ('name', 'email', 'create', 'active', 'isPlainText')
     list_filter = ('active', 'create', 'updated')
     search_fields = ('name', 'email', 'body')
 
