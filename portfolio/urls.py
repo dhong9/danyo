@@ -27,6 +27,7 @@ from portfolio.forums import views as forums_views
 router = routers.DefaultRouter()
 router.register(r'users', threadly_views.UserViewSet)
 router.register(r'groups', threadly_views.GroupViewSet)
+router.register(r'projects', threadly_views.ProjectViewSet)
 router.register(r'contacts', threadly_views.ContactViewSet)
 router.register(r'categories', forums_views.CategoryViewSet)
 
