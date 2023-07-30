@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from portfolio.threadly.models import Comment, Contact
+from portfolio.threadly.models import Project, Comment, Contact
 from rest_framework import serializers
 
 
@@ -13,6 +13,11 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
         fields = ['url', 'name']
+
+class ProjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields = '__all__'
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:

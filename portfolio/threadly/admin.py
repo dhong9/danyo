@@ -1,7 +1,12 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Comment, Contact
+from .models import Project, Comment, Contact
+
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description')
+    search_fields = ('name', 'description')
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):

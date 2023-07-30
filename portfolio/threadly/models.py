@@ -1,6 +1,14 @@
 from django.db import models
 from django.core.mail import EmailMessage
 
+# Project model
+class Project(models.Model):
+    name = models.CharField(max_length=50)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.name
+
 # Comment model
 class Comment(models.Model):
     pageName = models.CharField(max_length=50)

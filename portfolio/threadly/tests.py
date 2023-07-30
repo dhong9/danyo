@@ -1,5 +1,15 @@
 from django.test import TestCase
-from portfolio.threadly.models import Comment, Contact
+from portfolio.threadly.models import Project, Comment, Contact
+
+class ProjectTest(TestCase):
+
+    def create_project(self, name="Whitespace", description="Whitespace interpreter"):
+        return Project.objects.create(name=name, description=description)
+    
+    def test_project_creation(self):
+        project = self.create_project()
+        self.assertTrue(isinstance(project, Project))
+        self.assertEqual(str(project), project.name)
 
 class CommentTest(TestCase):
 
