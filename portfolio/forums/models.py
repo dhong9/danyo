@@ -28,7 +28,7 @@ class Post(models.Model):
         ordering = ['create']
 
     def __str__(self):
-        return self.body
+        return f"[{self.create}] {self.name} {self.body}"
 
     def get_posts(self):
         return Post.objects.filter(parent=self).filter(active=True)
