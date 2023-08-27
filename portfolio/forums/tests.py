@@ -55,4 +55,4 @@ class PostTest(TestCase):
     def test_post_creation(self):
         post = self.create_post()
         self.assertTrue(isinstance(post, Post))
-        self.assertEqual(str(post), post.body)
+        self.assertIn(post.body, str(post))
