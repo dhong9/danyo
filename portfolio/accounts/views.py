@@ -20,15 +20,15 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
 
     def update(self, request, *args, **kwargs):
-        instance = self.get_object()
-        instance.email = request.data.get("email")
-        instance.username = request.data.get("username")
-        instance.password = request.data.get("password")
-        instance.save()
-
-        serializer = self.get_serializer(instance)
-        serializer.is_valid(raise_exception=True)
-        self.perform_update(serialzer)
+        data_to_change = {
+            'username': request.data.get('username'),
+            'email': request.data.get('email'),
+            'password': request.data.get('password')
+        }
+        # Partial update of the data
+        serializer = self.serializer_class(request.user, data=data_to_change, partial=True)
+        if serializer.is_valid():
+            self.perform_update(serializer)
 
         return Response(serializer.data)
 

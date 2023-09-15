@@ -43,3 +43,10 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+    
+    def update(self, instance):
+        instance.username = validated_data['username']
+        instance.email = validated_data['email']
+        instance.password = validated_data['password']
+        instance.save()
+        return instance
