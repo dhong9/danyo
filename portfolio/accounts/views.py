@@ -25,18 +25,23 @@ def getRoutes(request):
     routes = [
         '/api/token/',
         '/api/register/',
-        '/api/token/refresh/'
+        '/api/token/refresh/',
+        '/api/update/'
     ]
     return Response(routes)
 
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST', 'PUT'])
 @permission_classes([IsAuthenticated])
 def testEndPoint(request):
     if request.method == 'GET':
-        data = f"Congratulation {request.user}, your API just responded to GET request"
+        data = f"Congratulations {request.user}, your API just responded to GET request"
         return Response({'response': data}, status=status.HTTP_200_OK)
-    elif request.method == 'POST':
+    if request.method == 'POST':
         text = request.POST.get('text')
-        data = f'Congratulation your API just responded to POST request with text: {text}'
+        data = f'Congratulations your API just responded to POST request with text: {text}'
+        return Response({'response': data}, status=status.HTTP_200_OK)
+    if request.method == 'POST':
+        text = request.PUT.get('text')
+        data = f'Congratulations your API just responded to PUT request with text: {text}'
         return Response({'response': data}, status=status.HTTP_200_OK)
     return Response({}, status.HTTP_400_BAD_REQUEST)
