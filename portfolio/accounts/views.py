@@ -24,20 +24,6 @@ class UpdateView(generics.UpdateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
 
-    def update(self, request, *args, **kwargs):
-        data_to_change = {
-            'username': request.data.get('username'),
-            'email': request.data.get('email'),
-            'password': request.data.get('password')
-        }
-        # Partial update of the data
-        serializer = self.serializer_class(request.user, data=data_to_change, partial=True)
-        if serializer.is_valid():
-            self.perform_update(serializer)
-
-        return Response(serializer.data)
-
-
 @api_view(['GET'])
 def getRoutes(request):
     routes = [
