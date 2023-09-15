@@ -40,7 +40,7 @@ def testEndPoint(request):
         text = request.POST.get('text')
         data = f'Congratulations your API just responded to POST request with text: {text}'
         return Response({'response': data}, status=status.HTTP_200_OK)
-    if request.method == 'POST':
+    if request.method == 'PUT':
         text = request.PUT.get('text')
         data = f'Congratulations your API just responded to PUT request with text: {text}'
         return Response({'response': data}, status=status.HTTP_200_OK)
