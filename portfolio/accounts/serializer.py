@@ -43,14 +43,3 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
-    
-    def update(self, validated_data):
-        user = User.objects.update(
-            username=validated_data['username'],
-            email=validated_data['email']
-        )
-
-        user.set_password(validated_data['password'])
-        user.save()
-
-        return user
