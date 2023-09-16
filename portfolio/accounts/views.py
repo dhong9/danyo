@@ -19,10 +19,19 @@ class RegisterView(generics.CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
 
-class UpdateView(generics.UpdateAPIView):
-    queryset = User.objects.all()
-    permission_classes = (AllowAny,)
+class UpdateView(generics.RetrieveUpdateAPIView):
+    permission_classes = (IsAuthenticated,)
     serializer_class = RegisterSerializer
+
+    def retrieve(self, request, *args, **kwargs):
+        serializer = self.serializer_class(request.user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    def update(self, request, *args, **kwargs):
+        serializer = self.serializer_class(request.user, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
 def getRoutes(request):
