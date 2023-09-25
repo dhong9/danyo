@@ -21,7 +21,7 @@ class RegisterView(generics.CreateAPIView):
 
 class UpdateView(generics.RetrieveUpdateAPIView):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = RegisterSerializer
     permission_classes = (IsAuthenticated,)
 
 @api_view(['GET'])
