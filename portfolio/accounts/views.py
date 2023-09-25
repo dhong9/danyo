@@ -24,6 +24,14 @@ class UpdateView(generics.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = RegisterSerializer
 
+    @action(detail=True, methods=['put'])
+    def update_profile(self, request, pk=None):
+        user = self.get_object()
+        serializer = self.get_serializer(user, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+
 @api_view(['GET'])
 def getRoutes(request):
     routes = [
