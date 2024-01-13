@@ -24,6 +24,11 @@ class UpdateView(generics.RetrieveUpdateAPIView):
     serializer_class = RegisterSerializer
     permission_classes = (IsAuthenticated,)
 
+class DeleteView(generics.DestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = RegisterSerializer
+    permission_classes = (IsAuthenticated,)
+
 @api_view(['GET'])
 def getRoutes(request):
     routes = [
