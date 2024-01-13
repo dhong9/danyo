@@ -35,11 +35,12 @@ def getRoutes(request):
         '/api/token/',
         '/api/register/',
         '/api/token/refresh/',
-        '/api/update/'
+        '/api/update/',
+        '/api/delete/',
     ]
     return Response(routes)
 
-@api_view(['GET', 'POST', 'PUT'])
+@api_view(['GET', 'POST', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def testEndPoint(request):
     if request.method == 'GET':
@@ -52,5 +53,9 @@ def testEndPoint(request):
     if request.method == 'PUT':
         text = request.PUT.get('text')
         data = f'Congratulations your API just responded to PUT request with text: {text}'
+        return Response({'response': data}, status=status.HTTP_200_OK)
+    if request.method == 'DELETE':
+        text = request.DELETE.get('text')
+        data = f'Congratulations your API just responded to DELETE request with text: {text}'
         return Response({'response': data}, status=status.HTTP_200_OK)
     return Response({}, status.HTTP_400_BAD_REQUEST)
