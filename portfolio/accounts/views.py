@@ -19,15 +19,10 @@ class RegisterView(generics.CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
 
-class UpdateView(generics.RetrieveUpdateAPIView):
+class UpdateView(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
-    permission_classes = (IsAuthenticated,)
-
-class DeleteView(generics.DestroyAPIView):
-    queryset = User.objects.all()
-    serializer_class = RegisterSerializer
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
 
 @api_view(['GET'])
 def getRoutes(request):
