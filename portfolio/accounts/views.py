@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from portfolio.accounts.serializer import MyTokenObtainPairSerializer, RegisterSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import generics
+from rest_framework.views import APIView
 from django.contrib.auth.models import User
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework import status
@@ -24,10 +25,16 @@ class UpdateView(generics.RetrieveUpdateAPIView):
     serializer_class = RegisterSerializer
     permission_classes = (IsAuthenticated,)
 
-class DeleteView(generics.DestroyAPIView):
+class DeleteView(APIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
     permission_classes = (IsAuthenticated,)
+
+    def delete(self, request, *args, **kwargs):
+        user = self.request.user
+        user.delete()
+
+        return Response({"result": "Account deleted"})
 
 @api_view(['GET'])
 def getRoutes(request):
