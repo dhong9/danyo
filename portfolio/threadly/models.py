@@ -6,6 +6,9 @@ class Project(models.Model):
     name = models.CharField(max_length=50)
     category = models.CharField(max_length=50)
 
+    class Meta:
+        ordering = ['-id']
+
     def __str__(self):
         return self.name
 
