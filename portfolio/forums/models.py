@@ -6,7 +6,7 @@ class Category(models.Model):
     description = models.TextField()
 
     class Meta:
-        ording = ['-id']
+        ordering = ['-id']
 
     def __str__(self):
         return self.name
