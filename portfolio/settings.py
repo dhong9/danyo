@@ -69,6 +69,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'portfolio.urls'
 APPEND_SLASH = False
+USE_X_FORWARDED_HOST = True
 
 TEMPLATES = [
     {
