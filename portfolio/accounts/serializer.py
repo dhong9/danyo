@@ -33,7 +33,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         
         # Check if user already exists
         if User.objects.filter(username=attrs['username']).exists():
-            return serializers.ValidationError("Username is already in use.")
+            raise serializers.ValidationError("Username is already in use.")
 
         return attrs
 
