@@ -2,7 +2,8 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from django.http import JsonResponse
-from portfolio.accounts.serializer import MyTokenObtainPairSerializer, RegisterSerializer
+from portfolio.accounts.serializer import MyTokenObtainPairSerializer, RegisterSerializer, ProfileSerializer
+from portfolio.accounts.models import Profile
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import generics
 from django.contrib.auth.models import User
@@ -28,8 +29,8 @@ class ProfileViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows contacts to be viewed or edited.
     """
-    queryset = Contact.objects.all()
-    serializer_class = ContactSerializer
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
 
 @api_view(['GET'])
 def getRoutes(request):
