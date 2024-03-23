@@ -12,5 +12,6 @@ urlpatterns = [
     path('update/<pk>/', views.UpdateView.as_view(), name='auth_update'),
     path('delete/<pk>/', views.UpdateView.as_view(), name='auth_delete'),
     path('test/', views.testEndPoint, name='test'),
+    path('profiles/', views.ProfileViewSet.as_view(), name='profiles'),
     path('', views.getRoutes)
 ]

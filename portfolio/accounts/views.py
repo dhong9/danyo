@@ -7,7 +7,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import generics
 from django.contrib.auth.models import User
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework import status
+from rest_framework import status, viewsets
 
 # Create your views here.
 
@@ -23,6 +23,13 @@ class UpdateView(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
     permission_classes = (AllowAny,)
+
+class ProfileViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows contacts to be viewed or edited.
+    """
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
 
 @api_view(['GET'])
 def getRoutes(request):
