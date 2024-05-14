@@ -39,7 +39,7 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
         # message:
         email_plaintext_message,
         # from:
-        "info@yourcompany.com",
+        "noreply@danyo.tech",
         # to:
         [reset_password_token.user.email],
         fail_silently=False,
