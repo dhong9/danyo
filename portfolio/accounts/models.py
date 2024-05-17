@@ -28,7 +28,7 @@ class Profile(models.Model):
 def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
 
     # the below like concatinates your websites reset password url and the reset email token which will be required at a later stage
-    email_plaintext_message = "Open the link to reset your password" + " " + "{}{}".format(instance.request.build_absolute_uri("http://localhost:3000/login#/reset-password-form/"), reset_password_token.key)
+    email_plaintext_message = "Open the link to reset your password" + " " + "{}{}".format(instance.request.build_absolute_uri("https://danyo.tech/pages/authentication/reset-password/"), reset_password_token.key)
     
     """
         this below line is the django default sending email function, 
@@ -36,7 +36,7 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
     """
     send_mail(
         # title:
-        "Password Reset for {title}".format(title="Crediation portal account"),
+        "Password Reset for {title}".format(title="Danyo Account"),
         # message:
         email_plaintext_message,
         # from:
