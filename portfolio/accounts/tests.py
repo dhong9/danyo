@@ -12,7 +12,7 @@ class EmailVerificationTest(APITestCase):
     # user infofmation
     user_data = {
         "email": "test@example.com", 
-        "username": "test_user", 
+        "username": "test_user",
         "password": "verysecret"
     }
     login_data = {
