@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 from djoser.conf import settings
 from djoser.serializers import TokenCreateSerializer
 
+# Rest Framework
+from rest_framework import serializers
+
 # Custom models
 from portfolio.accounts.models import Profile
 
