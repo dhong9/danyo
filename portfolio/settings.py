@@ -48,11 +48,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_rest_passwordreset',
-    'corsheaders',
-    'djoser',
+    #
     'rest_framework',
     'rest_framework.authtoken',
+    'djoser',
+    'corsheaders',
+    #
     'portfolio.threadly',
     'portfolio.accounts',
     'portfolio.forums'
@@ -208,6 +209,7 @@ DJOSER = {
     "LOGIN_FIELD": "email",
     "SEND_ACTIVATION_EMAIL": True,
     "ACTIVATION_URL": "activate/{uid}/{token}",
+    "PASSWORD_RESET_CONFIRM_URL": "reset_password/{uid}/{token}",
     'SERIALIZERS': {
         'token_create': 'portfolio.accounts.serializer.CustomTokenCreateSerializer',
     },
