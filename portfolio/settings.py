@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
     'rest_framework',
+    'rest_framework.authtoken',
     'portfolio.threadly',
     'portfolio.accounts',
     'portfolio.forums'
