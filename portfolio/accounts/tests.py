@@ -7,13 +7,13 @@ class EmailVerificationTest(APITestCase):
     # endpoints needed
     register_url = "/accounts/users/"
     activate_url = "/accounts/users/activation/"
+    resend_verification_url = "/accounts/users/resend_activation/"
     login_url = "/accounts/token/login/"
     user_details_url = "/accounts/users/"
-    resend_verification_url = "/accounts/users/resend_activation/"
     # user infofmation
     user_data = {
         "email": "test@example.com", 
-        "username": "test_user",
+        "username": "test_user", 
         "password": "verysecret"
     }
     login_data = {
@@ -55,6 +55,7 @@ class EmailVerificationTest(APITestCase):
         self.assertEqual(len(response.json()), 1)
         self.assertEqual(response.json()[0]["email"], self.user_data["email"])
         self.assertEqual(response.json()[0]["username"], self.user_data["username"])
+
     
     def test_register_resend_verification(self):
         # register the new user
@@ -95,6 +96,7 @@ class EmailVerificationTest(APITestCase):
         response = self.client.post(self.activate_url, data, format="json")
         # email verified
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
     
     def test_resend_verification_wrong_email(self):
         # register the new user
@@ -107,6 +109,7 @@ class EmailVerificationTest(APITestCase):
         response = self.client.post(self.resend_verification_url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         
+
 
     def test_activate_with_wrong_uid_token(self):
         # register the new user
