@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_rest_passwordreset',
     'corsheaders',
+    'djoser',
     'rest_framework',
     'portfolio.threadly',
     'portfolio.accounts',
