@@ -1,6 +1,5 @@
 # Django
-from django.contrib.auth import authenticate
-from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, get_user_model
 
 # Djoser
 from djoser.conf import settings
@@ -11,6 +10,8 @@ from rest_framework import serializers
 
 # Custom models
 from portfolio.accounts.models import Profile
+
+User = get_user_model()
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
