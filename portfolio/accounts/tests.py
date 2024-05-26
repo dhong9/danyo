@@ -9,6 +9,7 @@ class EmailVerificationTest(APITestCase):
     activate_url = "/accounts/users/activation/"
     login_url = "/accounts/token/login/"
     user_details_url = "/accounts/users/"
+    resend_verification_url = "/accounts/users/resend_activation/"
     # user infofmation
     user_data = {
         "email": "test@example.com", 
