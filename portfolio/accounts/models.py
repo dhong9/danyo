@@ -45,7 +45,3 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
         [reset_password_token.user.email],
         fail_silently=False,
     )
-
-User._meta.get_field('email')._unique = True
-User._meta.get_field('email').blank = False
-User._meta.get_field('email').null = False
