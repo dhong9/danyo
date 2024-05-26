@@ -5,7 +5,7 @@ from rest_framework.test import APITestCase
 class EmailVerificationTest(APITestCase):
 
     # endpoints needed
-    register_url = "/accounts/register/"
+    register_url = "/users/"
     activate_url = "/users/activation/"
     login_url = "/token/login/"
     user_details_url = "/users/"
@@ -13,7 +13,8 @@ class EmailVerificationTest(APITestCase):
     user_data = {
         "email": "test@example.com", 
         "username": "test_user",
-        "password": "verysecret"
+        "password": "verysecret",
+        "password2": "verysecret"
     }
     login_data = {
         "email": "test@example.com", 
