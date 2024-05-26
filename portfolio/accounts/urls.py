@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 from rest_framework_simplejwt.views import (
@@ -13,5 +13,7 @@ urlpatterns = [
     path('delete/<pk>/', views.UpdateView.as_view(), name='auth_delete'),
     path('test/', views.testEndPoint, name='test'),
     path('profiles/<pk>', views.ProfileViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='profiles'),
-    path('', views.getRoutes)
+    path('', views.getRoutes),
+    path('', include('djoser.urls')),
+    path('', include('djoser.urls.authtoken')),
 ]
