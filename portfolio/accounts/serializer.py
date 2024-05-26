@@ -2,6 +2,9 @@
 
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth import authenticate
+from djoser.conf import settings
+from djoser.serializers import TokenCreateSerializer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
@@ -53,3 +56,20 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = '__all__'
+
+class CustomTokenCreateSerializer(TokenCreateSerializer):
+
+    def validate(self, attrs):
+        password = attrs.get("password")
+        params = {settings.LOGIN_FIELD: attrs.get(settings.LOGIN_FIELD)}
+        self.user = authenticate(
+            request=self.context.get("request"), **params, password=password
+        )
+        if not self.user:
+            self.user = User.objects.filter(**params).first()
+            if self.user and not self.user.check_password(password):
+                self.fail("invalid_credentials")
+        # We changed only below line
+        if self.user: # and self.user.is_active: 
+            return attrs
+        self.fail("invalid_credentials")
