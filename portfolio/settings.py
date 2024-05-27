@@ -177,7 +177,7 @@ DJOSER = {
     "USER_ID_FIELD": "username",
     "LOGIN_FIELD": "email",
     "SEND_ACTIVATION_EMAIL": True,
-    "ACTIVATION_URL": "https://danyo.tech/pages/authentication/activate-account/{uid}/{token}",
+    "ACTIVATION_URL": "#/pages/authentication/activate-account/{uid}/{token}",
     "PASSWORD_RESET_CONFIRM_URL": "reset_password/{uid}/{token}",
     'SERIALIZERS': {
         'token_create': 'portfolio.accounts.serializer.CustomTokenCreateSerializer',
