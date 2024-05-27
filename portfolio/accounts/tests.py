@@ -32,7 +32,7 @@ class PasswordResetTest(APITestCase):
         
         # parse email to get uid and token
         email_lines = mail.outbox[0].body.splitlines()
-        activation_link = [l for l in email_lines if "/activate/" in l][0]
+        activation_link = [l for l in email_lines if "/activate-account/" in l][0]
         uid, token = activation_link.split("/")[-2:]
         
         # verify email
@@ -120,7 +120,7 @@ class EmailVerificationTest(APITestCase):
         # you can print email to check it
         # print(mail.outbox[0].subject)
         # print(mail.outbox[0].body)
-        activation_link = [l for l in email_lines if "/activate/" in l][0]
+        activation_link = [l for l in email_lines if "/activate-account/" in l][0]
         uid, token = activation_link.split("/")[-2:]
         
         # verify email
@@ -174,7 +174,7 @@ class EmailVerificationTest(APITestCase):
 
         # parse the last email
         email_lines = mail.outbox[1].body.splitlines()
-        activation_link = [l for l in email_lines if "/activate/" in l][0]
+        activation_link = [l for l in email_lines if "/activate-account/" in l][0]
         uid, token = activation_link.split("/")[-2:]
         
         # verify the email
