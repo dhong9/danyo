@@ -34,7 +34,3 @@ class CustomTokenCreateSerializer(TokenCreateSerializer):
         if self.user: # and self.user.is_active: 
             return attrs
         self.fail("invalid_credentials")
-    
-    class Meta:
-        model = User
-        ffields = '__all__'
