@@ -20,6 +20,16 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 class CustomTokenCreateSerializer(TokenCreateSerializer):
 
+    user = serializers.SerializerMethodField()
+
+    def get_user(self, obj):
+        user = self.user
+        return {
+            'id': user.id,
+            'username': user.username,
+            'email': user.email
+        }
+
     def validate(self, attrs):
         password = attrs.get("password")
         params = {settings.LOGIN_FIELD: attrs.get(settings.LOGIN_FIELD)}
