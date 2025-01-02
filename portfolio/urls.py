@@ -38,6 +38,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('accounts/', include('portfolio.accounts.urls')),
+    path('imgconverter/', include('portfolio.imgconverter.urls')),
     path('comments', threadly_views.CommentViewSet.as_view({'get': 'list', 'post': 'create'}), name='comments-list'),
     path('comments/<pk>', threadly_views.CommentViewSet.as_view({'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='comments-detail'),
     path('posts', forums_views.PostViewSet.as_view({'get': 'list', 'post': 'create'}), name='posts-list'),
