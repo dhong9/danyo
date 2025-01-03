@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from PIL import Image
 import numpy as np
 import io
 
+@csrf_exempt
 def img_to_excel(request):
     if request.method == "POST" and request.FILES.get("image"):
         try:
