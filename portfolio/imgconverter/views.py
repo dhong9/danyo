@@ -10,7 +10,7 @@ def img_to_excel(request):
     if request.method == "POST" and request.FILES.get("image"):
         try:
             # Read the uploaded image
-            image_request = request.FILES["image"]
+            image_file = request.FILES["image"]
             image = Image.open(image_file)
 
             # Ensure the image is in RGB mode
