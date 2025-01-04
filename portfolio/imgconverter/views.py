@@ -13,15 +13,8 @@ def img_to_excel(request):
             image_file = request.FILES["image"]
             image = Image.open(image_file)
 
-            # Ensure the image is in RGB mode
-            if image.mode != "RGB":
-                image = image.convert("RGB")
-            
-            # Convery image to a NumPy array
-            rgb_array = np.array(image) # Shape: (rows, columns, 3)
-
-            # Convert NumPy array to a Python list for JSON serialization
-            rgb_list = rgb_array.tolist()
+            # Convert image to RGB list
+            rgb_list = image_to_rgb(image)
 
             # Return the RGB array
             return JsonResponse({"rgb_values": rgb_list})
@@ -29,4 +22,17 @@ def img_to_excel(request):
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=400)
     
-    return JsonResponse({"error": "Invalid request. Please POST an image."}, status=400) 
+    return JsonResponse({"error": "Invalid request. Please POST an image."}, status=400)
+
+def image_to_rgb(image):
+    # Ensure the image is in RGB mode
+    if image.mode != "RGB":
+        image = image.convert("RGB")
+    
+    # Convery image to a NumPy array
+    rgb_array = np.array(image) # Shape: (rows, columns, 3)
+
+    # Convert NumPy array to a Python list for JSON serialization
+    rgb_list = rgb_array.tolist()
+
+    return rgb_list
