@@ -10,9 +10,11 @@ django-templated-mail==1.1.1
 djangorestframework==3.15.2
 djangorestframework-simplejwt==5.3.1
 djoser==2.3.1
+et_xmlfile==2.0.0
 idna==3.10
 numpy==2.2.1
 oauthlib==3.2.2
+openpyxl==3.1.5
 pillow==11.0.0
 pycparser==2.22
 PyJWT==2.10.1
