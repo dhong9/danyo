@@ -57,7 +57,8 @@ INSTALLED_APPS = [
     'portfolio.threadly',
     'portfolio.accounts',
     'portfolio.forums',
-    'portfolio.imgconverter'
+    'portfolio.imgconverter',
+    'portfolio.flightdata'
 ]
 
 MIDDLEWARE = [
