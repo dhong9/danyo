@@ -12,7 +12,7 @@ djangorestframework_simplejwt==5.5.1
 djoser==2.3.3
 et_xmlfile==2.0.0
 idna==3.11
-numpy==2.4.2
+numpy==2.2.6
 oauthlib==3.3.1
 openpyxl==3.1.5
 pillow==12.1.1
