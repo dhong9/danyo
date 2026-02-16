@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 # Views
 from portfolio.threadly import views as threadly_views
 from portfolio.forums import views as forums_views
+from portfolio.imgconverter import views as imgconverter_views
 
 router = routers.DefaultRouter()
 router.register(r'users', threadly_views.UserViewSet)
@@ -30,6 +31,7 @@ router.register(r'groups', threadly_views.GroupViewSet)
 router.register(r'projects', threadly_views.ProjectViewSet)
 router.register(r'contacts', threadly_views.ContactViewSet)
 router.register(r'categories', forums_views.CategoryViewSet)
+router.register(r'imgconverter', imgconverter_views.ImgConverterViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
